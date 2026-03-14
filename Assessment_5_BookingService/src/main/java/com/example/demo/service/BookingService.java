@@ -7,7 +7,6 @@ import com.example.demo.repository.BookingRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -27,7 +26,7 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    public Booking bookingFallback(Booking booking, Throwable t) {
+    public Booking bookingFallback(Booking booking, Exception e) {
         booking.setBookingId(-1);
         booking.setTotalAmount(0);
         return booking;
